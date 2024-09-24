@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Form Events Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        input, button, select {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .success {
+            color: green;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Advanced Form Events Example</h1>
+
+    <form id="advancedForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+        <span class="error" id="usernameError"></span>
+        <br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" placeholder="Enter your age" min="18" max="100">
+        <span class="error" id="ageError"></span>
+        <br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male"> Male
+        <input type="radio" id="female" name="gender" value="Female"> Female
+        <br>
+
+        <label for="preferences">Preferences:</label>
+        <input type="checkbox" id="subscribe" value="Subscribe"> Subscribe to newsletter
+        <input type="checkbox" id="updates" value="Updates"> Receive updates
+        <br>
+
+        <label for="country">Country:</label>
+        <select id="country">
+            <option value="">Select your country</option>
+            <option value="USA">USA</option>
+            <option value="India">India</option>
+            <option value="Canada">Canada</option>
+        </select>
+        <span class="error" id="countryError"></span>
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="success" id="successMessage"></div>
+
+    <script>
+        // Get form elements
+        const form = document.getElementById('advancedForm');
+        const username = document.getElementById('username');
+        const age = document.getElementById('age');
+        const country = document.getElementById('country');
+        const subscribe = document.getElementById('subscribe');
+        const updates = document.getElementById('updates');
+        const usernameError = document.getElementById('usernameError');
+        const ageError = document.getElementById('ageError');
+        const countryError = document.getElementById('countryError');
+        const successMessage = document.getElementById('successMessage');
+
+        // Form validation event listener
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default submission
+
+            // Reset errors and success message
+            usernameError.textContent = '';
+            ageError.textContent = '';
+            countryError.textContent = '';
+            successMessage.textContent = '';
+
+            let valid = true;
+
+            // Validate username
+            if (username.value.trim() === '') {
+                usernameError.textContent = 'Username is required';
+                valid = false;
+            }
+
+            // Validate age
+            if (age.value < 18 || age.value > 100) {
+                ageError.textContent = 'Age must be between 18 and 100';
+                valid = false;
+            }
+
+            // Validate country
+            if (country.value === '') {
+                countryError.textContent = 'Please select a country';
+                valid = false;
+            }
+
+            // If form is valid, show success message
+            if (valid) {
+                successMessage.textContent = 'Form submitted successfully!';
+                form.reset(); // Reset form fields
+            }
+        });
+
+        // Focus and blur event listeners for username
+        username.addEventListener('focus', function() {
+            username.style.backgroundColor = '#e0f7fa';
+        });
+
+        username.addEventListener('blur', function() {
+            username.style.backgroundColor = '';
+        });
+
+        // Change event for country selection
+        country.addEventListener('change', function() {
+            console.log(`Country selected: ${country.value}`);
+        });
+
+        // Checkbox change events
+        subscribe.addEventListener('change', function() {
+            console.log(`Subscribed to newsletter: ${subscribe.checked}`);
+        });
+
+        updates.addEventListener('change', function() {
+            console.log(`Receive updates: ${updates.checked}`);
+        });
+    </script>
+
+</body>
+</html>

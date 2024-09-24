@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation with Regular Expressions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: 100%;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .success {
+            color: green;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Form Validation with Regular Expressions</h1>
+    <form id="registrationForm">
+        <label for="name">Name (letters only):</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        <div id="nameError" class="error"></div>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="Enter your email">
+        <div id="emailError" class="error"></div>
+
+        <label for="phone">Phone (10 digits):</label>
+        <input type="text" id="phone" placeholder="Enter your phone number">
+        <div id="phoneError" class="error"></div>
+
+        <button type="button" onclick="validateForm()">Submit</button>
+        <div id="formMessage"></div>
+    </form>
+
+    <script>
+        // Function to validate the form
+        function validateForm() {
+            // Regular expressions for validation
+            const namePattern = /^[A-Za-z\s]+$/;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            const phonePattern = /^[0-9]{10}$/;
+
+            // Get form input values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            let isValid = true;
+
+            // Validate name
+            if (!namePattern.test(name)) {
+                document.getElementById('nameError').textContent = 'Please enter a valid name (letters only).';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').textContent = '';
+            }
+
+            // Validate email
+            if (!emailPattern.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email.';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').textContent = '';
+            }
+
+            // Validate phone
+            if (!phonePattern.test(phone)) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid 10-digit phone number.';
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').textContent = '';
+            }
+
+            // Show success message if all fields are valid
+            if (isValid) {
+                document.getElementById('formMessage').textContent = 'Form submitted successfully!';
+                document.getElementById('formMessage').className = 'success';
+            } else {
+                document.getElementById('formMessage').textContent = 'Please fix the errors above and submit again.';
+                document.getElementById('formMessage').className = 'error';
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session and Persistent Cookies Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 8px;
+            font-size: 16px;
+        }
+        .output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Session and Persistent Cookies</h1>
+
+    <!-- Form to set session cookie -->
+    <div>
+        <h3>Set Session Cookie</h3>
+        <input type="text" id="sessionValue" placeholder="Enter Session Cookie Value">
+        <button onclick="setSessionCookie()">Set Session Cookie</button>
+        <div class="output" id="sessionOutput"></div>
+    </div>
+
+    <!-- Form to set persistent cookie -->
+    <div>
+        <h3>Set Persistent Cookie</h3>
+        <input type="text" id="persistentValue" placeholder="Enter Persistent Cookie Value">
+        <button onclick="setPersistentCookie()">Set Persistent Cookie</button>
+        <div class="output" id="persistentOutput"></div>
+    </div>
+
+    <!-- Form to check cookies -->
+    <div>
+        <h3>Check Cookies</h3>
+        <button onclick="checkCookies()">Check Cookies</button>
+        <div class="output" id="cookieCheckOutput"></div>
+    </div>
+
+    <script>
+        // Function to set session cookie (expires when browser is closed)
+        function setSessionCookie() {
+            let value = document.getElementById('sessionValue').value;
+            document.cookie = "sessionCookie=" + value + "; path=/"; // No expiration means session cookie
+            document.getElementById('sessionOutput').textContent = 'Session Cookie Set: ' + value;
+        }
+
+        // Function to set persistent cookie (with expiration date)
+        function setPersistentCookie() {
+            let value = document.getElementById('persistentValue').value;
+            let date = new Date();
+            date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000)); // Expires in 7 days
+            let expires = "expires=" + date.toUTCString();
+            document.cookie = "persistentCookie=" + value + "; " + expires + "; path=/";
+            document.getElementById('persistentOutput').textContent = 'Persistent Cookie Set: ' + value;
+        }
+
+        // Function to check and display all cookies
+        function checkCookies() {
+            let cookies = document.cookie;
+            if (cookies) {
+                document.getElementById('cookieCheckOutput').textContent = 'Cookies: ' + cookies;
+            } else {
+                document.getElementById('cookieCheckOutput').textContent = 'No cookies found.';
+            }
+        }
+    </script>
+
+</body>
+</html>

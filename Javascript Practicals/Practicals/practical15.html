@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Bar & Web Page Protection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Style for the page content */
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        /* Footer to display status bar */
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+    <script>
+        // Disable right-click on the webpage
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            alert("Right-click is disabled on this page.");
+        });
+
+        // Disable text selection on the webpage
+        document.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+        });
+
+        // Display status message on the status bar (in the footer)
+        function updateStatusBar(message) {
+            document.getElementById('statusBar').textContent = message;
+        }
+
+        // Example of updating status on mouseover
+        function displayMessage() {
+            updateStatusBar("You are hovering over the protected content.");
+        }
+        
+        function clearMessage() {
+            updateStatusBar("Ready");
+        }
+    </script>
+</head>
+<body onload="updateStatusBar('Ready')">
+
+    <!-- Page Content -->
+    <div class="content">
+        <h1>Protected Web Page with Status Bar</h1>
+        <p onmouseover="displayMessage()" onmouseout="clearMessage()">
+            This webpage has disabled right-click and text selection to protect its content. Try right-clicking or selecting this text.
+        </p>
+    </div>
+
+    <!-- Status Bar (Footer) -->
+    <footer>
+        <span id="statusBar">Ready</span>
+    </footer>
+
+</body>
+</html>

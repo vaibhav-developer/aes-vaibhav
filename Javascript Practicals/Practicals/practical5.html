@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript String Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>String Operations in JavaScript</h1>
+
+    <h2>1. String Length</h2>
+    <input type="text" id="stringInput" placeholder="Enter a string">
+    <br>
+    <button onclick="getStringLength()">Get String Length</button>
+    <p id="lengthResult"></p>
+
+    <h2>2. Convert to Uppercase</h2>
+    <button onclick="convertToUpperCase()">Convert to Uppercase</button>
+    <p id="upperCaseResult"></p>
+
+    <h2>3. Convert to Lowercase</h2>
+    <button onclick="convertToLowerCase()">Convert to Lowercase</button>
+    <p id="lowerCaseResult"></p>
+
+    <h2>4. String Concatenation</h2>
+    <label for="concatInput1">Enter first string:</label>
+    <input type="text" id="concatInput1" placeholder="First string">
+    <br>
+    <label for="concatInput2">Enter second string:</label>
+    <input type="text" id="concatInput2" placeholder="Second string">
+    <br>
+    <button onclick="concatenateStrings()">Concatenate Strings</button>
+    <p id="concatResult"></p>
+
+    <h2>5. String Substring</h2>
+    <label for="substringStart">Enter start index:</label>
+    <input type="number" id="substringStart" placeholder="Start index">
+    <br>
+    <label for="substringEnd">Enter end index (optional):</label>
+    <input type="number" id="substringEnd" placeholder="End index">
+    <br>
+    <button onclick="getSubstring()">Get Substring</button>
+    <p id="substringResult"></p>
+
+    <script>
+        // Function to get the length of the string
+        function getStringLength() {
+            let str = document.getElementById('stringInput').value;
+            let length = str.length;
+            document.getElementById('lengthResult').innerHTML = "Length of the string: " + length;
+        }
+
+        // Function to convert string to uppercase
+        function convertToUpperCase() {
+            let str = document.getElementById('stringInput').value;
+            let upperCaseStr = str.toUpperCase();
+            document.getElementById('upperCaseResult').innerHTML = "Uppercase String: " + upperCaseStr;
+        }
+
+        // Function to convert string to lowercase
+        function convertToLowerCase() {
+            let str = document.getElementById('stringInput').value;
+            let lowerCaseStr = str.toLowerCase();
+            document.getElementById('lowerCaseResult').innerHTML = "Lowercase String: " + lowerCaseStr;
+        }
+
+        // Function to concatenate two strings
+        function concatenateStrings() {
+            let str1 = document.getElementById('concatInput1').value;
+            let str2 = document.getElementById('concatInput2').value;
+            let concatResult = str1 + " " + str2;
+            document.getElementById('concatResult').innerHTML = "Concatenated String: " + concatResult;
+        }
+
+        // Function to extract substring from the string
+        function getSubstring() {
+            let str = document.getElementById('stringInput').value;
+            let start = parseInt(document.getElementById('substringStart').value);
+            let end = parseInt(document.getElementById('substringEnd').value);
+            let substring;
+
+            if (!isNaN(start) && !isNaN(end)) {
+                substring = str.substring(start, end);
+            } else if (!isNaN(start)) {
+                substring = str.substring(start);
+            } else {
+                substring = "";
+            }
+
+            document.getElementById('substringResult').innerHTML = "Substring: " + substring;
+        }
+    </script>
+
+</body>
+</html>

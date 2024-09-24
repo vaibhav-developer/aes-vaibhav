@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Making & Looping Example 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Decision Making & Looping Example 2</h1>
+
+    <label for="numberInput">Enter a positive number:</label>
+    <input type="number" id="numberInput">
+
+    <br><br>
+
+    <button onclick="processNumber()">Submit</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function processNumber() {
+            const num = parseInt(document.getElementById('numberInput').value);
+            let resultMessage = '';
+
+            // Decision Making (if-else): Check for special cases
+            if (num < 0) {
+                resultMessage = `Please enter a positive number.<br>`;
+            } else if (num === 0) {
+                resultMessage = `You entered zero.<br>`;
+            } else {
+                resultMessage = `Counting from 1 to ${num}:<br>`;
+
+                // Looping (while loop): Print all numbers from 1 to the entered number
+                let i = 1;
+                while (i <= num) {
+                    resultMessage += i + ' ';
+                    i++;
+                }
+            }
+
+            document.getElementById('result').innerHTML = resultMessage;
+        }
+    </script>
+
+</body>
+</html>

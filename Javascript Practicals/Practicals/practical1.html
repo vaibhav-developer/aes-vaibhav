@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Expression Evaluation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Arithmetic Expression Evaluation</h1>
+
+    <label for="expression">Enter Arithmetic Expression:</label>
+    <input type="text" id="expression" placeholder="e.g. 2+2*3">
+
+    <br><br>
+
+    <button onclick="evaluateExpression()">Evaluate</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function evaluateExpression() {
+            // Get the input expression
+            const expression = document.getElementById('expression').value;
+
+            try {
+                // Use JavaScript's built-in eval() to evaluate the expression
+                const result = eval(expression);
+
+                // Display the result and a message
+                document.getElementById('result').innerHTML = 
+                    `The result of the expression <strong>${expression}</strong> is <strong>${result}</strong>. Great Job!`;
+            } catch (error) {
+                // Display an error message if there's a problem with the expression
+                document.getElementById('result').innerHTML = 
+                    "Invalid expression. Please enter a valid arithmetic expression!";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Learn JavaScript Functions with Interaction</h1>
+
+    <h2>1. Simple Function</h2>
+    <button onclick="showMessage()">Click Me</button>
+    <p id="messageResult"></p>
+
+    <h2>2. Parameterized Function</h2>
+    <label for="nameInput">Enter your name:</label>
+    <input type="text" id="nameInput" placeholder="Your name">
+    <br>
+    <button onclick="greetUser()">Greet Me</button>
+    <p id="greetResult"></p>
+
+    <h2>3. Function with Return Value</h2>
+    <label for="numInput1">Enter first number:</label>
+    <input type="number" id="numInput1" placeholder="0">
+    <br>
+    <label for="numInput2">Enter second number:</label>
+    <input type="number" id="numInput2" placeholder="0">
+    <br>
+    <button onclick="calculateSum()">Calculate Sum</button>
+    <p id="sumResult"></p>
+
+    <script>
+        // Simple Function Example
+        function showMessage() {
+            document.getElementById('messageResult').innerHTML = "Hello! This is a simple function.";
+        }
+
+        // Parameterized Function Example
+        function greetUser() {
+            let name = document.getElementById('nameInput').value;
+            if (name) {
+                document.getElementById('greetResult').innerHTML = "Hello, " + name + "! Nice to meet you!";
+            } else {
+                document.getElementById('greetResult').innerHTML = "Please enter your name.";
+            }
+        }
+
+        // Function with Return Value
+        function calculateSum() {
+            let num1 = parseFloat(document.getElementById('numInput1').value);
+            let num2 = parseFloat(document.getElementById('numInput2').value);
+            let sum = addNumbers(num1, num2);  // Calling another function
+            document.getElementById('sumResult').innerHTML = "The sum is: " + sum;
+        }
+
+        // Function to add two numbers
+        function addNumbers(a, b) {
+            return a + b;
+        }
+    </script>
+
+</body>
+</html>

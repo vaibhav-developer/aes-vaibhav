@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Hidden Fruit Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .result, .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .fruits-list {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Guess the Hidden Fruit Game</h1>
+    
+    <p>Try to guess the hidden fruit from the list below:</p>
+    <div id="fruitsList" class="fruits-list"></div>
+
+    <label for="guessInput">Your Guess:</label>
+    <input type="text" id="guessInput" placeholder="Enter a fruit">
+
+    <br><br>
+
+    <button onclick="checkGuess()">Submit Guess</button>
+    <button onclick="showHint()">Need a Hint?</button>
+
+    <div class="message" id="message"></div>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        // Array of fruits
+        let fruits = ["apple", "banana", "cherry", "grape", "mango", "orange", "peach", "pear", "pineapple", "strawberry"];
+        let hiddenFruit = fruits[Math.floor(Math.random() * fruits.length)];  // Randomly selecting a hidden fruit
+        let attempts = 0;
+
+        // Show the list of available fruits
+        document.getElementById("fruitsList").innerHTML = `Available Fruits: ${fruits.join(', ')}`;
+
+        // Function to check user's guess
+        function checkGuess() {
+            const guess = document.getElementById("guessInput").value.toLowerCase();
+            attempts++;
+
+            // Check if the guess is correct
+            if (fruits.includes(guess)) {
+                if (guess === hiddenFruit) {
+                    document.getElementById("result").innerHTML = `🎉 Correct! The hidden fruit was ${hiddenFruit}. You guessed it in ${attempts} attempts!`;
+                    document.getElementById("message").innerHTML = "";
+                } else {
+                    document.getElementById("message").innerHTML = `❌ ${guess} is not the hidden fruit. Try again!`;
+                }
+            } else {
+                document.getElementById("message").innerHTML = `❌ ${guess} is not in the list. Please choose a fruit from the list.`;
+            }
+        }
+
+        // Function to give a hint (showing the first letter of the hidden fruit)
+        function showHint() {
+            document.getElementById("message").innerHTML = `Hint: The hidden fruit starts with '${hiddenFruit.charAt(0)}'.`;
+        }
+
+    </script>
+
+</body>
+</html>

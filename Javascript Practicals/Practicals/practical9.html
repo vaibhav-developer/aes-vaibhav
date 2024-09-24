@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intrinsic JavaScript Functions Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Intrinsic JavaScript Functions Example</h1>
+
+    <div>
+        <h3>Generate Random Number</h3>
+        <button onclick="generateRandom()">Generate</button>
+        <div class="output" id="randomOutput"></div>
+    </div>
+
+    <div>
+        <h3>Convert String to Uppercase</h3>
+        <input type="text" id="stringInput" placeholder="Enter a string">
+        <button onclick="convertToUppercase()">Convert</button>
+        <div class="output" id="uppercaseOutput"></div>
+    </div>
+
+    <div>
+        <h3>Current Date and Time</h3>
+        <button onclick="showDateTime()">Show Date and Time</button>
+        <div class="output" id="dateTimeOutput"></div>
+    </div>
+
+    <script>
+        // Generate random number using Math.random() and display it
+        function generateRandom() {
+            let randomNumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById('randomOutput').textContent = 'Random Number: ' + randomNumber;
+        }
+
+        // Convert string to uppercase using string.toUpperCase() and display it
+        function convertToUppercase() {
+            let inputString = document.getElementById('stringInput').value;
+            let uppercaseString = inputString.toUpperCase();
+            document.getElementById('uppercaseOutput').textContent = 'Uppercase: ' + uppercaseString;
+        }
+
+        // Display the current date and time using Date object
+        function showDateTime() {
+            let currentDateTime = new Date();
+            document.getElementById('dateTimeOutput').textContent = 'Current Date and Time: ' + currentDateTime;
+        }
+    </script>
+
+</body>
+</html>

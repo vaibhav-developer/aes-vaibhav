@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rollover Effect Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .image-container {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .image-container:hover {
+            transform: scale(1.1); /* Zooms the image on hover */
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .description {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Image Rollover Effect</h1>
+
+    <div class="image-container">
+        <img id="mainImage" src="https://www.redwolf.in/image/cache/catalog/stickers/tom-face-sticker-india-600x800.jpg?m=1687858270" alt="Placeholder Image 1">
+        <div class="description">Hover over the image to see the effect</div>
+    </div>
+
+    <script>
+        // You can also change the image on hover (optional)
+        const image = document.getElementById('mainImage');
+
+        image.addEventListener('mouseover', function() {
+            image.src = 'https://mystickermania.com/cdn/stickers/tom-and-jerry/tom-jerry-hugs-512x512.png'; // Image changes on hover
+        });
+
+        image.addEventListener('mouseout', function() {
+            image.src = 'https://www.redwolf.in/image/cache/catalog/stickers/tom-face-sticker-india-600x800.jpg?m=1687858270'; // Reverts back to original image
+        });
+    </script>
+
+</body>
+</html>

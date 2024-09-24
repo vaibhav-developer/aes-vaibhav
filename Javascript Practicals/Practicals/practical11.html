@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window and Child Window Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Working with Parent and Child Windows</h1>
+    <p>Click the buttons below to control windows on the screen.</p>
+
+    <button onclick="openChildWindow()">Open Child Window</button>
+    <button onclick="resizeChildWindow()">Resize Child Window</button>
+    <button onclick="moveChildWindow()">Move Child Window</button>
+    <button onclick="closeChildWindow()">Close Child Window</button>
+
+    <script>
+        let childWindow;
+
+        // Function to open a new child window
+        function openChildWindow() {
+            childWindow = window.open("", "Child Window", "width=400,height=300");
+            childWindow.document.write("<h2>This is a Child Window</h2>");
+            childWindow.document.write("<p>You can move, resize, or close this window from the parent window.</p>");
+        }
+
+        // Function to resize the child window
+        function resizeChildWindow() {
+            if (childWindow) {
+                childWindow.resizeTo(600, 400); // Resize to 600x400
+            } else {
+                alert("Open the child window first!");
+            }
+        }
+
+        // Function to move the child window
+        function moveChildWindow() {
+            if (childWindow) {
+                childWindow.moveTo(200, 200); // Move the window to (200, 200) position
+            } else {
+                alert("Open the child window first!");
+            }
+        }
+
+        // Function to close the child window
+        function closeChildWindow() {
+            if (childWindow) {
+                childWindow.close(); // Close the child window
+            } else {
+                alert("No child window is open!");
+            }
+        }
+    </script>
+
+</body>
+</html>
